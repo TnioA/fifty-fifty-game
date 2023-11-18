@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Fifty-Fifty Game</title>
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
     <div class="background">
-        <img class="background-image" src="58914.jpg" alt="">
+        <!-- <img class="background-image" src="assets/background2.jpg" alt=""> -->
     </div>
     <div class="container">
         <div class="content">
@@ -21,10 +23,15 @@
                 <div class="game-content-tile">
                     <span>A kitty cat | Accident with family</span>
                 </div>
-                <div class="game-image">
-                    <img class="blur"
+                <div class="game-image-box">
+                    <img 
+                        class="blur"
+                        id="game-image"
                         src="https://t4.ftcdn.net/jpg/00/97/58/97/360_F_97589769_t45CqXyzjz0KXwoBZT9PRaWGHRk5hQqQ.jpg"
                         alt="">
+                </div>
+                <div class="skeleton show">
+                    <div class="block-touch"></div>
                 </div>
             </div>
             <div class="controlls">

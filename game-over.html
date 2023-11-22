@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Fifty-Fifty Game</title>
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -20,19 +20,19 @@
                 <img src="/assets/5050header.png" alt="">
             </div>
             <div class="game-content">
-                <div class="game-start-img">
+                <div class="game-over-img">
                     <div class="img-wrapper">
-                        <img src="/assets/18+.png" alt="">
+                        <img src="/assets/game-over.png" alt="">
                     </div>
                 </div>
             </div>
             <div class="controlls">
-                <button class="btn-play">Play</button>
+                <button class="btn-play-again"> Play again?</button>
             </div>
         </div>
     </div>
     <script>
-        document.querySelector(".btn-play").addEventListener("click", ()=> window.location.href = "/game.html");
+        document.querySelector(".btn-play-again").addEventListener("click", () => window.location.href = "/game.html");
     </script>
 </body>
 

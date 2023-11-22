@@ -79,16 +79,16 @@ function shuffle(array) {
     return array;
 }
 
-function next() {
+async function next() {
     imageBox.classList = ["game-image-box"];
     skeleton.classList = ["skeleton show"];
 
-    var interval = setInterval(()=> {
+    var interval = setInterval(async ()=> {
         const leftList = shuffle(content.filter(x=> x.type === 1));
         const rightList = shuffle(content.filter(x=> x.type === 2));
         
         if(leftList.length < 1 || rightList.length < 1) {
-            console.log("Game Over");
+            window.location.href = "/game-over.html";
             clearInterval(interval);
             return;
         }
@@ -99,17 +99,27 @@ function next() {
     
         content = content.filter(x=> x.url !== trueImage.url);
     
+        gameImage.classList = ["blur"]
+        await loadImage(trueImage.url, gameImage);
+
         gameContentTitle.innerHTML = typeSelected === 1 ?
         `<span>${trueImage.description} | ${fakeImage.description}</span>` : 
         `<span>${fakeImage.description} | ${trueImage.description}</span>`
 
-        gameImage.classList = ["blur"]
-        gameImage.setAttribute("src", trueImage.url);
+
         skeleton.classList = ["skeleton"];
         imageBox.classList = ["game-image-box show"]
         clearInterval(interval);
     }, 500);
 }
+
+async function loadImage(url, elem) {
+    return new Promise((resolve, reject) => {
+      elem.onload = () => resolve(elem);
+      elem.onerror = reject;
+      elem.src = url;
+    });
+  }
 
 btnNext.addEventListener("click", ()=> next());
 

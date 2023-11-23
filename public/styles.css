@@ -63,25 +63,27 @@
 .game-image-box {
     max-width: 500px;
     width: 100%;
+    max-height: 400px;
     display: none;
     overflow: hidden;
     margin-bottom: 15px;
     position: relative;
-    background: #fff;
-    max-height: 400px;
+    /* background: #fff; */
 }
 
 .game-image-box.show {
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.game-image-box img {
+#game-image {
     width: 100%;
-    /* transition: all 0.2s ease; */
-    vertical-align: middle;
+    height: 400px;
+    background-size: contain !important;
 }
 
-.game-image-box img.blur {
+#game-image.blur {
     filter: blur(20px);
 }
 

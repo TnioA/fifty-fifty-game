@@ -45,10 +45,18 @@ function shuffle(array) {
 }
 
 async function loadImage(url, elem) {
+    // return new Promise((resolve, reject) => {
+    //     elem.onload = () => resolve(elem);
+    //     elem.onerror = reject;
+    //     // elem.src = url;
+    // });
+
+    var img = new Image();
+    img.src = url;
     return new Promise((resolve, reject) => {
-        elem.onload = () => resolve(elem);
-        elem.onerror = reject;
-        elem.src = url;
+        img.onload = () => resolve(elem);
+        img.onerror = reject;
+        elem.style.background = "#fff url(" + url + ") no-repeat center center";
     });
 }
 
@@ -80,26 +88,26 @@ async function next() {
 
     const leftList = shuffle(content.filter(x => x.type === 1));
     const rightList = shuffle(content.filter(x => x.type === 2));
-    
+
     if (leftList.length < 1 || rightList.length < 1) {
         window.location.href = "game-over.html";
         return;
     }
-    
+
     const typeSelected = (Math.random() < 0.5) ? 1 : 2;
     const trueImage = typeSelected === 1 ? leftList[0] : rightList[0];
     const fakeImage = typeSelected === 1 ? rightList[0] : leftList[0];
 
     trueImage.url = await getDownloadURL(ref(storage, trueImage.path));
-    
+
     content = content.filter(x => x.url !== trueImage.url);
     gameImage.classList = ["blur"]
+
     await loadImage(trueImage.url, gameImage);
-    
+
     gameContentTitle.innerHTML = typeSelected === 1 ?
         `<span>${trueImage.description} | ${fakeImage.description}</span>` :
         `<span>${fakeImage.description} | ${trueImage.description}</span>`
-
 
     skeleton.classList = ["skeleton"];
     imageBox.classList = ["game-image-box show"];

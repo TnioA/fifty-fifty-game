@@ -84,7 +84,7 @@
 }
 
 #game-image.blur {
-    filter: blur(20px);
+    filter: blur(30px);
 }
 
 .controlls {
